@@ -29,6 +29,7 @@ const signup = async (req, res) => {
     const userId = await userRepo.createUser(name, email, phone, hashedPassword);
     return res.status(201).json({ message: 'Account created successfully!', userId });
   } catch (err) {
+    console.error('Signup error:', err);
     return res.status(500).json({ message: 'Server error.' });
   }
 };
@@ -51,6 +52,7 @@ const login = async (req, res) => {
       user: { id: user.id, name: user.name, email: user.email, phone: user.phone }
     });
   } catch (err) {
+    console.error('Login error:', err);
     return res.status(500).json({ message: 'Server error.' });
   }
 };
@@ -61,6 +63,7 @@ const getMe = async (req, res) => {
     if (!user) return res.status(404).json({ message: 'User not found.' });
     return res.status(200).json({ user });
   } catch (err) {
+    console.error('GetMe error:', err);
     return res.status(500).json({ message: 'Server error.' });
   }
 };
