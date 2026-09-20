@@ -1,5 +1,7 @@
 require('dotenv').config();
 const mysql = require('mysql2/promise');
+const dns = require('dns');
+dns.setDefaultResultOrder('ipv4first');
 
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
@@ -8,7 +10,10 @@ const pool = mysql.createPool({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   waitForConnections: true,
-  connectionLimit: 10
+  connectionLimit: 10,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 (async () => {
