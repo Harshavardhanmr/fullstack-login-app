@@ -7,8 +7,8 @@ require('dotenv').config();
 const JWT_SECRET = process.env.JWT_SECRET;
 const cookieOptions = {
   httpOnly: true,
-  secure: false,
-  sameSite: 'Lax',
+  secure: true,
+  sameSite: 'none',
   maxAge: 7 * 24 * 60 * 60 * 1000
 };
 
