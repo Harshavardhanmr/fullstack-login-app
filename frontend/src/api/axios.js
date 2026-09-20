@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api/auth',
+  baseURL: 'https://fullstack-login-app-31m1.onrender.com/api/auth',
   withCredentials: true,
 });
 
